@@ -7,7 +7,7 @@ class Faculty
 	public $teachers;
 
 
-	public function __construct(string $name, array $groups = null, array $teachers = null) {
+	public function __construct(string $name, array $groups = [], array $teachers = []) {
 		$this->name		= $name;
 		foreach ($groups as $group) {
 			$this->add_child_item($group);
