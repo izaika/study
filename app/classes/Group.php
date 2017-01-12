@@ -2,25 +2,26 @@
 
 class Group
 {
+	use Faculty_Child;
+
 	public $name;
 	public $students = [];
 
-	public function __construct(string $name, array $students) {
+	public function __construct(string $name, array $students, Faculty $faculty) {
 		$this->name		= $name;
 		foreach ($students as $student) {
-			if ($student instanceof Student) {
-				$this->students[spl_object_hash($student)] = $student;
-			}
+			$this->add_student($student);
 		}
+		$this->faculty	= $faculty;
 	}
 
 	public function add_student(Student $student) {
-		if (!array_key_exists(spl_object_hash($student), $this->students)) {
-			$this->students[spl_object_hash($student)] = $student;
-		}
+		$student->group = $this;
+		$this->students[spl_object_hash($student)] = $student;
 	}
 
 	public function remove_student(Student $student) {
+		$student->group = null;
 		unset($this->students[spl_object_hash($student)]);
 	}
 }

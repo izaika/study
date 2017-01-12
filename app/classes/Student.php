@@ -3,6 +3,7 @@
 class Student extends Person
 {
 	public $has_scholarship;
+	public $group;
 
 	/**
 	 * Student constructor.
@@ -16,5 +17,6 @@ class Student extends Person
 		$this->dob				= $dob;
 		$this->gender			= $gender;
 		$this->has_scholarship	= $has_scholarship;
+		$this->group			= null;
 	}
 }

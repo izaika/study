@@ -2,7 +2,8 @@
 
 class Teacher extends Person
 {
-	public $faculty;
+	use Faculty_Child;
+
 	public $position;
 	public $academic_degree;
 
