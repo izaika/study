@@ -3,8 +3,8 @@
 class Faculty
 {
 	public $name;
-	public $groups;
-	public $teachers;
+	public $groups		= [];
+	public $teachers	= [];
 
 
 	public function __construct(string $name, array $groups = [], array $teachers = []) {

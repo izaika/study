@@ -7,7 +7,13 @@ class Group
 	public $name;
 	public $students = [];
 
-	public function __construct(string $name, array $students, Faculty $faculty) {
+	/**
+	 * Group constructor.
+	 * @param string $name
+	 * @param Faculty $faculty
+	 * @param array $students
+	 */
+	public function __construct(string $name, Faculty $faculty, array $students = []) {
 		$this->name		= $name;
 		foreach ($students as $student) {
 			$this->add_student($student);
