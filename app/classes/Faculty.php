@@ -16,7 +16,9 @@ class Faculty
 
 
 	public function add_child_item(Faculty_Child $item) {
-		$item->faculty = $this;
+		if (spl_object_hash($item->getFaculty()) != spl_object_hash($this)) {
+			$item->setFaculty($this);
+		}
 		switch (get_class($item)) {
 			case 'Group':
 				$this->groups[spl_object_hash($item)] = $item;
@@ -29,7 +31,9 @@ class Faculty
 
 
 	public function remove_child_item(Faculty_Child $item) {
-		$item->faculty = null;
+		if (spl_object_hash($item->getFaculty()) == spl_object_hash($this)) {
+			$item->removeFaculty();
+		}
 		switch (get_class($item)) {
 			case 'Group':
 				unset($this->groups[spl_object_hash($item)]);
@@ -41,13 +45,18 @@ class Faculty
 	}
 
 
-	public function setName(string $name) {
-		$this->$name = $name;
+	public function hasChildItem(Faculty_Child $item) {
+		return array_key_exists(spl_object_hash($item), array_merge($this->groups, $this->teachers));
 	}
 
 
 	public function getName() {
 		return $this->name;
+	}
+
+
+	public function setName(string $name) {
+		$this->name = $name;
 	}
 
 

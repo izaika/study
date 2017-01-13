@@ -2,5 +2,5 @@
 
 trait Faculty_Child
 {
-	public $faculty;
+	private $faculty;
 }

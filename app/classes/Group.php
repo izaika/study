@@ -4,8 +4,8 @@ class Group
 {
 	use Faculty_Child;
 
-	public $name;
-	public $students = [];
+	private $name;
+	private $students = [];
 
 	/**
 	 * Group constructor.
@@ -18,16 +18,56 @@ class Group
 		foreach ($students as $student) {
 			$this->add_student($student);
 		}
-		$this->faculty	= $faculty;
+		$this->setFaculty($faculty);
 	}
+
 
 	public function add_student(Student $student) {
 		$student->group = $this;
 		$this->students[spl_object_hash($student)] = $student;
 	}
 
+
 	public function remove_student(Student $student) {
 		$student->group = null;
 		unset($this->students[spl_object_hash($student)]);
+	}
+
+
+	public function getName() {
+		return $this->name;
+	}
+
+
+	public function setName(string $name) {
+		$this->name = $name;
+	}
+
+
+	public function getStudents() {
+		return $this->students;
+	}
+
+
+	public function getFaculty() {
+		return $this->faculty;
+	}
+
+
+	public function setFaculty(Faculty $faculty) {
+		$this->faculty = $faculty;
+		if (!$faculty->hasChildItem($this)) {
+			$faculty->add_child_item($this);
+		}
+	}
+
+
+	public function removeFaculty() {
+		if ($this->faculty) {
+			if ($this->faculty->hasChildItem($this)) {
+				$this->faculty->removeChildItem($this);
+			}
+			$this->faculty = null;
+		}
 	}
 }
