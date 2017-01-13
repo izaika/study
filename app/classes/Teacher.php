@@ -14,8 +14,8 @@ class Teacher extends Person
 	const ACADEMIC_DEGREE_DOCTOR		= 1;
 	const ACADEMIC_DEGREE_PROFESSOR		= 2;
 
-	public $position;
-	public $academic_degree;
+	private $position;
+	private $academic_degree;
 
 	/**
 	 * Teacher constructor.
@@ -33,7 +33,47 @@ class Teacher extends Person
 		$this->position			= $position;
 		$this->academic_degree	= $academic_degree;
 		if ($faculty) {
-			$faculty->add_child_item($this);
+			$this->setFaculty($faculty);
 		}
+	}
+
+
+	public function getName() {
+		return $this->name;
+	}
+
+
+	public function setName(string $name) {
+		$this->name = $name;
+	}
+
+
+	public function getDob() {
+		return $this->dob;
+	}
+
+
+	public function setDob(string $dob) {
+		$this->dob = $dob;
+	}
+
+
+	public function getPosition() {
+		return $this->position;
+	}
+
+
+	public function setPosition(int $position) {
+		$this->position = $position;
+	}
+
+
+	public function getAcademicDegree() {
+		return $this->academic_degree;
+	}
+
+
+	public function setAcademicDegree(int $academic_degree) {
+		$this->academic_degree = $academic_degree;
 	}
 }

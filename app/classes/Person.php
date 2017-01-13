@@ -5,7 +5,7 @@ abstract class Person
 	const GENDER_MALE	= 0;
 	const GENDER_FEMALE	= 1;
 
-	public $name;
-	public $dob;
-	public $gender;
+	protected $name;
+	protected $dob;
+	protected $gender;
 }

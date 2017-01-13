@@ -20,7 +20,7 @@ class Student extends Person
 		$this->gender			= $gender;
 		$this->has_scholarship	= $has_scholarship;
 		if ($group) {
-			$group->add_student($this);
+			$group->addStudent($this);
 		}
 	}
 }

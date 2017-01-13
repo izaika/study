@@ -10,12 +10,12 @@ class Faculty
 	public function __construct(string $name, array $groups = [], array $teachers = []) {
 		$this->name		= $name;
 		foreach ($groups as $group) {
-			$this->add_child_item($group);
+			$this->addChildItem($group);
 		}
 	}
 
 
-	public function add_child_item(Faculty_Child $item) {
+	public function addChildItem(Faculty_Child $item) {
 		if (spl_object_hash($item->getFaculty()) != spl_object_hash($this)) {
 			$item->setFaculty($this);
 		}
@@ -30,7 +30,7 @@ class Faculty
 	}
 
 
-	public function remove_child_item(Faculty_Child $item) {
+	public function removeChildItem(Faculty_Child $item) {
 		if (spl_object_hash($item->getFaculty()) == spl_object_hash($this)) {
 			$item->removeFaculty();
 		}
