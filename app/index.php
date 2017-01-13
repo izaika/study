@@ -1,4 +1,10 @@
 <?php
+	foreach(glob('interfaces/*.php') as $file) {
+		require $file;
+	}
+	foreach(glob('traits/*.php') as $file) {
+		require $file;
+	}
 	foreach(glob('classes/*.php') as $file) {
 		require $file;
 	}
@@ -11,6 +17,14 @@
 	<body>
 		<h1>University application</h1>
 <?php
+	echo '<h2>Create first faculty</h2>';
+	$faculty1 = new Faculty('Elit');
+	var_dump($faculty1);
+	echo '<h2>Create first group</h2>';
+	$group1 = new Group('EP-61', $faculty1);
+	var_dump($group1);
+
+
 //	$student1	= new Student('Igor Zaika', '1989-12-19', Person::GENDER_MALE, false);
 //	$student2	= new Student('Lorem Ipsum', '1990-11-05', Person::GENDER_FEMALE, true);
 //	$student3	= new Student('Vehicula Sollicitudin', '1988-08-08', Person::GENDER_FEMALE, false);

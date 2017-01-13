@@ -1,8 +1,8 @@
 <?php
 
-class Group
+class Group implements Interface_Faculty_Child
 {
-	use Faculty_Child;
+	use Trait_Faculty_Child;
 
 	private $name;
 	private $students = [];

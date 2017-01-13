@@ -4,7 +4,7 @@
  * @property  Faculty $faculty
  */
 
-trait Faculty_Child
+trait Trait_Faculty_Child
 {
 	private $faculty;
 
