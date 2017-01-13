@@ -23,6 +23,12 @@
 	echo '<h2>Create first group</h2>';
 	$group1 = new Group('EP-61', $faculty1);
 	var_dump($group1);
+	echo '<h2>Remove faculty from group</h2>';
+	$group1->removeFaculty();
+	var_dump($group1);
+	echo '<h2>Add the group to the same faculty</h2>';
+	$group1->setFaculty($faculty1);
+	var_dump($group1);
 
 
 //	$student1	= new Student('Igor Zaika', '1989-12-19', Person::GENDER_MALE, false);

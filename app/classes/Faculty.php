@@ -31,9 +31,6 @@ class Faculty
 
 
 	public function removeChildItem(Interface_Faculty_Child $item) {
-		if (spl_object_hash($item->getFaculty()) == spl_object_hash($this)) {
-			$item->removeFaculty();
-		}
 		switch (get_class($item)) {
 			case 'Group':
 				unset($this->groups[spl_object_hash($item)]);
@@ -41,6 +38,9 @@ class Faculty
 			case 'Teacher':
 				unset($this->teachers[spl_object_hash($item)]);
 				break;
+		}
+		if (spl_object_hash($item->getFaculty()) == spl_object_hash($this)) {
+			$item->removeFaculty();
 		}
 	}
 
