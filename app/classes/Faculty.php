@@ -2,9 +2,9 @@
 
 class Faculty
 {
-	public $name;
-	public $groups		= [];
-	public $teachers	= [];
+	private $name;
+	private $groups		= [];
+	private $teachers	= [];
 
 
 	public function __construct(string $name, array $groups = [], array $teachers = []) {
@@ -38,5 +38,25 @@ class Faculty
 				unset($this->teachers[spl_object_hash($item)]);
 				break;
 		}
+	}
+
+
+	public function setName(string $name) {
+		$this->$name = $name;
+	}
+
+
+	public function getName() {
+		return $this->name;
+	}
+
+
+	public function getGroups() {
+		return $this->groups;
+	}
+
+
+	public function getTeachers() {
+		return $this->teachers;
 	}
 }
