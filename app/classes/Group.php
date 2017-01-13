@@ -23,14 +23,23 @@ class Group
 
 
 	public function addStudent(Student $student) {
-		$student->group = $this;
+		if (spl_object_hash($student->getGroup()) != spl_object_hash($this)) {
+			$student->setGroup($this);
+		}
 		$this->students[spl_object_hash($student)] = $student;
 	}
 
 
 	public function removeStudent(Student $student) {
-		$student->group = null;
+		if (spl_object_hash($student->getGroup()) == spl_object_hash($this)) {
+			$student->removeGroup();
+		}
 		unset($this->students[spl_object_hash($student)]);
+	}
+
+
+	public function hasStudent(Student $item) {
+		return array_key_exists(spl_object_hash($item), $this->students);
 	}
 
 
