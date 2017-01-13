@@ -38,26 +38,6 @@ class Teacher extends Person
 	}
 
 
-	public function getName() {
-		return $this->name;
-	}
-
-
-	public function setName(string $name) {
-		$this->name = $name;
-	}
-
-
-	public function getDob() {
-		return $this->dob;
-	}
-
-
-	public function setDob(string $dob) {
-		$this->dob = $dob;
-	}
-
-
 	public function getPosition() {
 		return $this->position;
 	}
