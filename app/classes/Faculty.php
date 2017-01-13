@@ -15,7 +15,7 @@ class Faculty
 	}
 
 
-	public function addChildItem(Faculty_Child $item) {
+	public function addChildItem(Interface_Faculty_Child $item) {
 		if (spl_object_hash($item->getFaculty()) != spl_object_hash($this)) {
 			$item->setFaculty($this);
 		}
@@ -30,7 +30,7 @@ class Faculty
 	}
 
 
-	public function removeChildItem(Faculty_Child $item) {
+	public function removeChildItem(Interface_Faculty_Child $item) {
 		if (spl_object_hash($item->getFaculty()) == spl_object_hash($this)) {
 			$item->removeFaculty();
 		}
@@ -45,7 +45,7 @@ class Faculty
 	}
 
 
-	public function hasChildItem(Faculty_Child $item) {
+	public function hasChildItem(Interface_Faculty_Child $item) {
 		return array_key_exists(spl_object_hash($item), array_merge($this->groups, $this->teachers));
 	}
 

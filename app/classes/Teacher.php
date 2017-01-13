@@ -1,8 +1,8 @@
 <?php
 
-class Teacher extends Person
+class Teacher extends Person implements Interface_Faculty_Child
 {
-	use Faculty_Child;
+	use Trait_Faculty_Child;
 
 	const POSITION_ASPIRANT				= 0;
 	const POSITION_TEACHER				= 1;
