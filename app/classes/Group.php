@@ -23,18 +23,18 @@ class Group implements Interface_Faculty_Child
 
 
 	public function addStudent(Student $student) {
+		$this->students[spl_object_hash($student)] = $student;
 		if (spl_object_hash($student->getGroup()) != spl_object_hash($this)) {
 			$student->setGroup($this);
 		}
-		$this->students[spl_object_hash($student)] = $student;
 	}
 
 
 	public function removeStudent(Student $student) {
+		unset($this->students[spl_object_hash($student)]);
 		if (spl_object_hash($student->getGroup()) == spl_object_hash($this)) {
 			$student->removeGroup();
 		}
-		unset($this->students[spl_object_hash($student)]);
 	}
 
 
