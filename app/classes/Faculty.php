@@ -16,9 +16,6 @@ class Faculty
 
 
 	public function addChildItem(Interface_Faculty_Child $item) {
-		if (spl_object_hash($item->getFaculty()) != spl_object_hash($this)) {
-			$item->setFaculty($this);
-		}
 		switch (get_class($item)) {
 			case 'Group':
 				$this->groups[spl_object_hash($item)] = $item;
@@ -26,6 +23,9 @@ class Faculty
 			case 'Teacher':
 				$this->teachers[spl_object_hash($item)] = $item;
 				break;
+		}
+		if (spl_object_hash($item->getFaculty()) != spl_object_hash($this)) {
+			$item->setFaculty($this);
 		}
 	}
 

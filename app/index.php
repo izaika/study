@@ -29,11 +29,11 @@
 	echo '<h2>Add the group to the same faculty</h2>';
 	$group1->setFaculty($faculty1);
 	var_dump($group1);
-
-
-//	$student1	= new Student('Igor Zaika', '1989-12-19', Person::GENDER_MALE, false);
-//	$student2	= new Student('Lorem Ipsum', '1990-11-05', Person::GENDER_FEMALE, true);
-//	$student3	= new Student('Vehicula Sollicitudin', '1988-08-08', Person::GENDER_FEMALE, false);
+	echo '<h2>Create students objects for group1</h2>';
+	$student1	= new Student('Igor Zaika', '1989-12-19', Person::GENDER_MALE, false, $group1);
+	$student2	= new Student('Lorem Ipsum', '1990-11-05', Person::GENDER_FEMALE, true, $group1);
+	$student3	= new Student('Vehicula Sollicitudin', '1988-08-08', Person::GENDER_FEMALE, false, $group1);
+	var_dump($group1);
 //
 //	$teacher1	= new Teacher()
 //	$group1		= new Group('MINDK-2017', [$student1, $student2]);
